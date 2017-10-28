@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http://www.slashapp.ml
+HOST: https://www.slashapp.ml
 
 # slashapp
 
@@ -27,6 +27,35 @@ HOST: http://www.slashapp.ml
 
 ## Video [/video]
 
+### Get Video List [GET]
++ Request
+    + Header
+    
+            X-UDID: 2b6f0cc904d137be2e1730235f5664094b831186
+
++ Response 200 (application/json)
+    + Body
+
+            [
+                {
+                    "id": 1,
+                    "created_at":1509194038,
+                    "video_file":"1.mov",
+                    "thumbnail":"1.jpg",
+                    "longtitude":135,
+                    "latitude":35
+                },
+                {
+                    "id": 2,
+                    "created_at":1509194038,
+                    "video_file":"2.mov",
+                    "thumbnail":"2.jpg"
+                    "longtitude":135,
+                    "latitude":35,
+                }
+            ]
+
+
 ### Post Video Data [POST]
 
 + Request (multipart/form-data; boundary=poyopoyo)
@@ -44,8 +73,33 @@ HOST: http://www.slashapp.ml
              /9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AL+AD//Z
             --poyopoyo
             
-+ Response 201 (application/json)
++ Response 200 (application/json)
 
+    + Body
+
+            {
+                "status":"ok"
+            }
+            
+## Get Specific Video Data [/video/(filename)]
+
+### Get Specific Data [GET]
++ Request 
+    + Header
+
+            X-UDID: 2b6f0cc904d137be2e1730235f5664094b831186
+            
++ Response 200 (image/jpg)
+
+
+## LINE register [/line]
+### register line id [POST]
++ Request
+    + Header
+
+            X-UDID: 2b6f0cc904d137be2e1730235f5664094b831186
+
++ Response 200 (application/json)
     + Body
 
             {
