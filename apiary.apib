@@ -1,80 +1,53 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: http://www.slashapp.ml
 
 # slashapp
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+## Locations [/locations]
 
-## Questions Collection [/questions]
+### Post User Location [POST]
++ Request (application/json)
+    + Headers
 
-### List All Questions [GET]
+            X-UDID: 2b6f0cc904d137be2e1730235f5664094b831186
+    
+    + Body
+
+            {
+                "latitude": 35.0,
+                "longtitude": 135.0,
+            }
 
 + Response 200 (application/json)
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
-
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
-
-+ Request (application/json)
-
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+            "status": "warn",
+            "message": "イキリオタクが出ます"
         }
 
+## Video [/video]
+
+### Post Video Data [POST]
+
++ Request (multipart/form-data; boundary=poyopoyo)
+    + Header
+    
+            X-UDID: 2b6f0cc904d137be2e1730235f5664094b831186
+
+    + Body
+    
+            --poyopoyo
+            Content-Disposition: form-data; name="video"
+            Content-Type: "video/quicktime"
+            Content-Transfer-Encoding: base64
+            
+             /9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AL+AD//Z
+            --poyopoyo
+            
 + Response 201 (application/json)
-
-    + Headers
-
-            Location: /questions/2
 
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+                "status":"ok"
             }
